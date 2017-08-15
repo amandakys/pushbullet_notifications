@@ -15,7 +15,7 @@ git clone https://github.com/amandakys/pushbullet_notifications.git
 ```
 
 ### Run the Maven Build 
-navigate to uppermost /notifications folder 
+inside /pushbullet_notifications folder 
 ```
 ./mvnw spring-boot:run
 ```
