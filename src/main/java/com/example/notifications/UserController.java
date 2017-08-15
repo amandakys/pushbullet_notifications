@@ -12,8 +12,6 @@ import org.springframework.web.client.RestTemplate;
 public class UserController {
 
     //create user
-    /*curl -d '{"username":"bbcUser1", "accessToken":"o.2jOld5V1c5qGYg4KDPEPrUROdcDUBMtr"}'
-    -X POST http://localhost:8080/create -H "content-type: application/json"*/
     @RequestMapping(value = "/create", method = RequestMethod.POST, headers={"content-type=application/json"})
     public ResponseEntity<User> createUser(@RequestBody User user) {
         Application.users.add(user);
@@ -21,7 +19,6 @@ public class UserController {
     }
 
     //request list of users
-    //http://localhost:8080/users
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getUsers() {
         if (Application.users.isEmpty()) {
@@ -32,7 +29,6 @@ public class UserController {
     }
 
     //request info of specific user
-    //http://localhost:8080/user/bbcUser1
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
     public ResponseEntity<User> getUser(@PathVariable String username) {
         User user = Application.findUser(username);
@@ -44,7 +40,6 @@ public class UserController {
     }
 
     //send notification
-    //curl -d '{"username":"bbcUser1"}' -X POST http://localhost:8080/push/ -H "content-type: application/json"
     @RequestMapping(value = "/push", method = RequestMethod.POST, headers={"content-type=application/json"})
     public void sendNotification(@RequestBody User username) {
         User target = Application.findUser(username.getUsername());
